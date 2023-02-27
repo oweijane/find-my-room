@@ -2,10 +2,11 @@ package com.findmyroom.room.controller;
 
 import com.findmyroom.room.domain.entity.Room;
 import com.findmyroom.room.domain.service.RoomService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
+@Controller
 public class RoomController {
     private final RoomService roomService;
 
@@ -14,17 +15,20 @@ public class RoomController {
     }
 
     @GetMapping("/status")
+    @ResponseBody
     public Room roomStatus(@RequestParam(value = "roomId") String roomId) {
         return roomService.getRoom(roomId);
     }
 
-    @PatchMapping("/occupy")
-    public void occupyRoom(@RequestParam(value = "roomId") String roomId) {
+    @GetMapping("/occupy")
+    public String occupyRoom(@RequestParam(value = "roomId") String roomId) {
         roomService.occupyRoom(roomId);
+        return "occupy";
     }
 
-    @PatchMapping("/vacate")
-    public void vacateRoom(@RequestParam(value = "roomId") String roomId) {
+    @GetMapping("/vacate")
+    public String vacateRoom(@RequestParam(value = "roomId") String roomId) {
         roomService.vacateRoom(roomId);
+        return "vacate";
     }
 }
