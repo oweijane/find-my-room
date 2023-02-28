@@ -8,7 +8,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbParti
 public class Room {
 
     private String roomId;
-    private boolean status;
+    private boolean roomStatus;
 
     @DynamoDbPartitionKey
     @DynamoDbAttribute("roomId")
@@ -19,10 +19,10 @@ public class Room {
         this.roomId = roomId;
     }
 
-    public boolean getStatus() {
-        return status;
+    public boolean getRoomStatus() {
+        return roomStatus;
     }
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setRoomStatus(boolean roomStatus) {
+        this.roomStatus = roomStatus;
     }
 }

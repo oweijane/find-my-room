@@ -4,6 +4,8 @@ import com.findmyroom.room.domain.entity.Room;
 import com.findmyroom.room.domain.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoomService {
     private final boolean VACANT = true;
@@ -16,6 +18,10 @@ public class RoomService {
 
     public Room getRoom(String roomId) {
         return roomRepository.getRoom(roomId);
+    }
+
+    public List<Room> getVacantRooms() {
+        return roomRepository.getVacantRooms();
     }
 
     public void occupyRoom(String roomId) {

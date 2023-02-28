@@ -5,6 +5,8 @@ import com.findmyroom.room.domain.service.RoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 public class RoomController {
@@ -30,5 +32,11 @@ public class RoomController {
     public String vacateRoom(@RequestParam(value = "roomId") String roomId) {
         roomService.vacateRoom(roomId);
         return "vacate";
+    }
+
+    @GetMapping("/vacant")
+    @ResponseBody
+    public List<Room> getVacantRooms() {
+        return roomService.getVacantRooms();
     }
 }
